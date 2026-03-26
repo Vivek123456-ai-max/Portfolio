@@ -65,7 +65,7 @@ const Work = () => {
               <h4>Tools and features</h4>
               <p>Full Stack, Deployment, Performance Optimization</p>
             </div>
-            <WorkImage image="/images/environment.webp" alt="Environment BitNex Project" />
+            <WorkImage image="./images/environment.webp" alt="Environment BitNex Project" />
           </div>
           <div className="work-box">
             <div className="work-info">
@@ -79,7 +79,7 @@ const Work = () => {
               <h4>Tools and features</h4>
               <p>Blender, 3D Modeling, Animation, Scene Composition</p>
             </div>
-            <WorkImage image="/images/max.webp" alt="3D Environment Artwork" />
+            <WorkImage image="./images/max.webp" alt="3D Environment Artwork" />
           </div>
         </div>
       </div>

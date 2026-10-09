@@ -134,13 +134,13 @@
     max-height: 250px;
   }
   .work-box {
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding-top: 30px;
+    padding-bottom: 30px;
   }
   .work-section h2 {
     font-size: 60px;
-    margin-bottom: 30px;
-    margin-top: 70px;
+    margin-bottom: 20px;
+    margin-top: 50px;
   }
 }
 @media only screen and (max-width: 1400px) {
@@ -155,7 +155,7 @@
   }
   .work-box {
     width: 450px;
-    padding: 50px;
+    padding: 40px;
   }
   .work-flex {
     margin-left: -50px;
@@ -165,46 +165,61 @@
     font-size: 50px;
   }
 }
-@media only screen and (max-width: 1400px) {
-  .work-box {
-    width: 350px;
-    padding: 30px;
-  }
-  .work-flex {
-    margin-left: -30px;
-    padding-right: 45px;
-  }
-}
-
-@media only screen and (max-height: 650px) {
-  .work-image img {
-    max-height: 200px;
-  }
-  .work-section h2 {
-    font-size: 40px;
-    margin-bottom: 20px;
-  }
-  .work-box {
-    gap: 20px;
-  }
-}
-/* @media only screen and (max-width: 900px) {
-  .work-image img {
-    max-height: 200px;
-  }
-  .work-section h2 {
-    font-size: 40px;
-    margin-bottom: 20px;
-  }
-  .work-box {
-    gap: 20px;
-  }
-} */
 @media only screen and (max-width: 1025px) {
   .work-container {
     align-content: normal;
   }
   .work-flex {
     height: auto;
+  }
+  .work-box {
+    width: min(80vw, 400px);
+    padding: 30px 25px;
+    gap: 30px;
+  }
+  .work-flex {
+    margin-left: -20px;
+    padding-right: 40px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .work-section h2 {
+    font-size: clamp(32px, 8vw, 45px);
+    margin-top: 30px;
+    margin-bottom: 15px;
+  }
+  .work-box {
+    width: min(85vw, 340px);
+    padding: 20px 15px;
+    gap: 15px;
+  }
+  .work-title h3 {
+    font-size: 28px;
+    line-height: 28px;
+  }
+  .work-title > div h4 {
+    font-size: 16px;
+  }
+  .work-info h4 {
+    font-size: 13px;
+  }
+  .work-info p {
+    font-size: 12px;
+  }
+  .work-image img {
+    max-height: 180px;
+    border-radius: 8px;
+  }
+}
+@media only screen and (max-height: 650px) {
+  .work-image img {
+    max-height: 180px;
+  }
+  .work-section h2 {
+    font-size: 35px;
+    margin-bottom: 15px;
+  }
+  .work-box {
+    gap: 15px;
   }
 }

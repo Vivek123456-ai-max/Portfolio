@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./styles/Loading.css";
 import { useLoading } from "../context/LoadingProvider";
-
+import { initialFX } from "./utils/initialFX";
 import Marquee from "react-fast-marquee";
 
 const Loading = ({ percent }: { percent: number }) => {
@@ -10,34 +10,29 @@ const Loading = ({ percent }: { percent: number }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [clicked, setClicked] = useState(false);
 
-  // Bug fix: moved out of render body into useEffect
   useEffect(() => {
     if (percent >= 100) {
       const t1 = setTimeout(() => {
         setLoaded(true);
         const t2 = setTimeout(() => {
           setIsLoaded(true);
-        }, 1000);
+        }, 250);
         return () => clearTimeout(t2);
-      }, 600);
+      }, 150);
       return () => clearTimeout(t1);
     }
   }, [percent]);
 
   useEffect(() => {
     if (!isLoaded) return;
-    let cancelled = false;
-    import("./utils/initialFX").then((module) => {
-      if (cancelled) return;
-      setClicked(true);
-      setTimeout(() => {
-        if (module.initialFX) {
-          module.initialFX();
-        }
-        setIsLoading(false);
-      }, 900);
-    });
-    return () => { cancelled = true; };
+    setClicked(true);
+    const t3 = setTimeout(() => {
+      if (initialFX) {
+        initialFX();
+      }
+      setIsLoading(false);
+    }, 350);
+    return () => clearTimeout(t3);
   }, [isLoaded, setIsLoading]);
 
   function handleMouseMove(e: React.MouseEvent<HTMLElement>) {
@@ -53,7 +48,7 @@ const Loading = ({ percent }: { percent: number }) => {
     <>
       <div className="loading-header">
         <a href="/#" className="loader-title" data-cursor="disable">
-          Logo
+          VIVEK
         </a>
         <div className={`loaderGame ${clicked && "loader-out"}`}>
           <div className="loaderGame-container">
@@ -102,22 +97,13 @@ export default Loading;
 export const setProgress = (setLoading: (value: number) => void) => {
   let percent: number = 0;
 
-  let interval = setInterval(() => {
-    if (percent <= 50) {
-      const rand = Math.round(Math.random() * 5);
-      percent = percent + rand;
+  const interval = setInterval(() => {
+    if (percent < 85) {
+      const step = Math.floor(Math.random() * 8) + 8;
+      percent = Math.min(85, percent + step);
       setLoading(percent);
-    } else {
-      clearInterval(interval);
-      interval = setInterval(() => {
-        percent = percent + Math.round(Math.random());
-        setLoading(percent);
-        if (percent > 91) {
-          clearInterval(interval);
-        }
-      }, 2000);
     }
-  }, 100);
+  }, 40);
 
   function clear() {
     clearInterval(interval);
@@ -127,15 +113,16 @@ export const setProgress = (setLoading: (value: number) => void) => {
   function loaded() {
     return new Promise<number>((resolve) => {
       clearInterval(interval);
-      interval = setInterval(() => {
-        if (percent < 100) {
-          percent++;
-          setLoading(percent);
+      let current = percent;
+      const finishInterval = setInterval(() => {
+        if (current < 100) {
+          current = Math.min(100, current + 10);
+          setLoading(current);
         } else {
-          resolve(percent);
-          clearInterval(interval);
+          clearInterval(finishInterval);
+          resolve(100);
         }
-      }, 2);
+      }, 15);
     });
   }
   return { loaded, percent, clear };

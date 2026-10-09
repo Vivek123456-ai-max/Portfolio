@@ -6,7 +6,7 @@ const About = () => {
       <div className="about-me">
         <h3 className="title">About Me</h3>
         <p className="para">
-          I’m Vivek Kumar, a passionate Full Stack Developer & Creative Technologist with hands-on experience in web development, game development, 3D modeling and animation (Blender), video editing, and SEO. I enjoy building interactive digital experiences and combining creativity with technology to deliver impactful solutions.
+          I’m Vivek Kumar Singh, a Results-driven Full Stack Developer & Creative Technologist with expertise in game development, 3D modeling and animation (Blender), video editing, and SEO. Skilled in building scalable web applications, interactive digital experiences, and high-quality visual content.
         </p>
       </div>
     </div>
@@ -14,3 +14,4 @@ const About = () => {
 };
 
 export default About;
+
